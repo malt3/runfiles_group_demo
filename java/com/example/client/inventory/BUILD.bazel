@@ -1,0 +1,13 @@
+load("@rules_java//java:java_binary.bzl", "java_binary")
+
+java_binary(
+    name = "inventory",
+    srcs = ["InventoryClient.java"],
+    main_class = "com.example.client.inventory.InventoryClient",
+    visibility = ["//java:__pkg__"],
+    deps = [
+        "//java/com/example/model",
+        "//java/com/example/util",
+        "@maven//:com_google_code_gson_gson",
+    ],
+)

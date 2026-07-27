@@ -1,0 +1,14 @@
+load("@rules_java//java:java_library.bzl", "java_library")
+
+java_library(
+    name = "service",
+    srcs = [
+        "GreetingService.java",
+        "InventoryService.java",
+    ],
+    visibility = ["//java:__subpackages__"],
+    deps = [
+        "//java/com/example/model",
+        "//java/com/example/util",
+    ],
+)

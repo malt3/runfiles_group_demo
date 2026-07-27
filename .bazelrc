@@ -1,0 +1,9 @@
+common --registry=https://bazel-contrib.github.io/rules_runfiles_group --registry=https://bcr.bazel.build
+
+# Java
+build --java_runtime_version=remotejdk_21
+
+# Enable RunfilesGroupInfo collection
+common --@rules_runfiles_group//runfiles_group:enabled=true
+
+common:disable-rgi --@rules_runfiles_group//runfiles_group:enabled=false

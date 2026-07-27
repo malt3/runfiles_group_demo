@@ -1,0 +1,13 @@
+load("@rules_java//java:java_binary.bzl", "java_binary")
+
+java_binary(
+    name = "inventory",
+    srcs = ["InventoryServer.java"],
+    main_class = "com.example.inventory.InventoryServer",
+    visibility = ["//java:__pkg__"],
+    deps = [
+        "//java/com/example/model",
+        "//java/com/example/service",
+        "//java/com/example/util",
+    ],
+)

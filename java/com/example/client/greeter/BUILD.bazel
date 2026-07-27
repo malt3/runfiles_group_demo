@@ -1,0 +1,12 @@
+load("@rules_java//java:java_binary.bzl", "java_binary")
+
+java_binary(
+    name = "greeter",
+    srcs = ["GreeterClient.java"],
+    main_class = "com.example.client.greeter.GreeterClient",
+    visibility = ["//java:__pkg__"],
+    deps = [
+        "//java/com/example/model",
+        "//java/com/example/util",
+    ],
+)

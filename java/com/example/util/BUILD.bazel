@@ -1,0 +1,11 @@
+load("@rules_java//java:java_library.bzl", "java_library")
+
+java_library(
+    name = "util",
+    srcs = ["JsonUtil.java"],
+    visibility = ["//java:__subpackages__"],
+    deps = [
+        "//java/com/example/model",
+        "@maven//:com_google_code_gson_gson",
+    ],
+)

@@ -1,0 +1,9 @@
+load("@rules_img//img:multi_deploy.bzl", "multi_deploy")
+
+multi_deploy(
+    name = "push",
+    operations = [
+        "//java:greeter_push",
+        "//java:inventory_push",
+    ],
+)
