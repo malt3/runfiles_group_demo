@@ -1,11 +1,11 @@
 load("@rules_img//img:image.bzl", "image_from_binary")
-load("@rules_img//img:layer.bzl", "image_layer")
 load("@rules_img//img:push.bzl", "image_push")
 
 image_from_binary(
     name = "greeter_image",
     base = "@debian",
     binary = "//java/com/example/greeter",
+    use_runfiles_groups = True,
     platforms = [
         "//platform:linux_amd64",
         "//platform:linux_arm64",
@@ -17,10 +17,7 @@ image_push(
     image = ":greeter_image",
     registry = "ghcr.io",
     repository = "malt3/runfiles-group-demo/java-greeter",
-    tag_list = select({
-        "//config:rgi_enabled": ["runfiles-groups", "latest"],
-        "//conditions:default": ["flat"],
-    }),
+    tag_list = ["runfiles-groups", "latest"],
     visibility = ["//visibility:public"],
 )
 
@@ -28,6 +25,7 @@ image_from_binary(
     name = "inventory_image",
     base = "@debian",
     binary = "//java/com/example/inventory",
+    use_runfiles_groups = True,
     platforms = [
         "//platform:linux_amd64",
         "//platform:linux_arm64",
@@ -39,9 +37,6 @@ image_push(
     image = ":inventory_image",
     registry = "ghcr.io",
     repository = "malt3/runfiles-group-demo/java-inventory",
-    tag_list = select({
-        "//config:rgi_enabled": ["runfiles-groups", "latest"],
-        "//conditions:default": ["flat"],
-    }),
+    tag_list = ["runfiles-groups", "latest"],
     visibility = ["//visibility:public"],
 )

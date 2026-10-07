@@ -1,6 +1,6 @@
-bazel_dep(name = "rules_runfiles_group", version = "99.0.0-dev.20260727.1.fe49e75")
-bazel_dep(name = "rules_img", version = "99.0.0-dev.20260727.1.016a180")
-bazel_dep(name = "rules_java", version = "99.0.0-dev.20260727.1.705d909")
+bazel_dep(name = "rules_runfiles_group", version = "99.0.0-dev.20261009.1.f6acddf")
+bazel_dep(name = "rules_img", version = "99.0.0-dev.20261009.1.4a8bfc9")
+bazel_dep(name = "rules_java", version = "99.0.0-dev.20261009.1.850733b")
 bazel_dep(name = "rules_jvm_external", version = "7.1")
 bazel_dep(name = "platforms", version = "1.0.0")
 
@@ -22,10 +22,12 @@ pull(
     digest = "sha256:56aaf20ab2523a346a67c8e8f8e8dabe447447d0788b82284d14ad79cd5f93cc",
     registry = "gcr.io",
     repository = "distroless/cc-debian13",
+    layer_handling = "eager",
 )
 
 pull(
     name = "debian",
     digest = "sha256:35b8ff74ead4880f22090b617372daff0ccae742eb5674455d542bef71ef1999",
     repository = "debian",
+    layer_handling = "eager",
 )
