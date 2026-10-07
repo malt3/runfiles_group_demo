@@ -1,7 +1,0 @@
-config_setting(
-    name = "rgi_enabled",
-    flag_values = {
-        "@rules_runfiles_group//runfiles_group:enabled": "true",
-    },
-    visibility = ["//visibility:public"],
-)
