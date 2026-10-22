@@ -2,6 +2,7 @@ bazel_dep(name = "rules_runfiles_group", version = "99.0.0-dev.20261016.1.41d254
 bazel_dep(name = "rules_img", version = "99.0.0-dev.20261016.1.703e8f8")
 bazel_dep(name = "rules_java", version = "99.0.0-dev.20261016.1.3a1aeaa")
 bazel_dep(name = "rules_jvm_external", version = "7.1")
+bazel_dep(name = "rules_python", version = "99.0.0-dev.20261022.1.a87d772")
 bazel_dep(name = "platforms", version = "1.0.0")
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
@@ -14,6 +15,22 @@ maven.install(
     ],
 )
 use_repo(maven, "maven")
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
+    hub_name = "pypi",
+    python_version = "3.12",
+    requirements_lock = "//python:requirements.txt",
+    target_platforms = [
+        "linux_x86_64",
+        "linux_aarch64",
+        "osx_aarch64",
+    ],
+)
+use_repo(pip, "pypi")
+
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python.toolchain(python_version = "3.12", is_default = True)
 
 pull = use_repo_rule("@rules_img//img:pull.bzl", "pull")
 

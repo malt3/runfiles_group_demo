@@ -2,3 +2,7 @@ common --registry=https://bazel-contrib.github.io/rules_runfiles_group --registr
 
 # Java
 build --java_runtime_version=remotejdk_21
+
+# Python
+common --incompatible_default_to_explicit_init_py
+common --@rules_python//python/config_settings:bootstrap_impl=script

@@ -1,0 +1,43 @@
+load("@rules_img//img:image.bzl", "image_from_binary")
+load("@rules_img//img:push.bzl", "image_push")
+
+image_from_binary(
+    name = "greeter_image",
+    base = "@debian",
+    binary = "//python/greeter",
+    use_runfiles_groups = True,
+    platforms = [
+        "//platform:linux_amd64",
+        "//platform:linux_arm64",
+    ],
+)
+
+image_push(
+    name = "greeter_push",
+    image = ":greeter_image",
+    registry = "ghcr.io",
+    repository = "malt3/runfiles-group-demo/python-greeter",
+    tag_list = ["runfiles-groups", "latest"],
+    visibility = ["//visibility:public"],
+)
+exports_files(["requirements.txt"])
+
+image_from_binary(
+    name = "inventory_image",
+    base = "@debian",
+    binary = "//python/inventory",
+    use_runfiles_groups = True,
+    platforms = [
+        "//platform:linux_amd64",
+        "//platform:linux_arm64",
+    ],
+)
+
+image_push(
+    name = "inventory_push",
+    image = ":inventory_image",
+    registry = "ghcr.io",
+    repository = "malt3/runfiles-group-demo/python-inventory",
+    tag_list = ["runfiles-groups", "latest"],
+    visibility = ["//visibility:public"],
+)

@@ -5,5 +5,7 @@ multi_deploy(
     operations = [
         "//java:greeter_push",
         "//java:inventory_push",
+        "//python:greeter_push",
+        "//python:inventory_push",
     ],
 )
